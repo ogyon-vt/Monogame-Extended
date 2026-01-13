@@ -8,8 +8,8 @@ namespace MonoGame.Extended.Screens.Transitions
     public abstract class Transition : IDisposable
     {
         private readonly float _halfDuration;
-        private float _currentSeconds;
-        
+        public float CurrentSeconds;
+
         protected Transition(float duration)
         {
             Duration = duration;
@@ -18,32 +18,32 @@ namespace MonoGame.Extended.Screens.Transitions
 
         public abstract void Dispose();
 
-        public TransitionState State { get; private set; } = TransitionState.Out;
+        public TransitionState State { get; set; } = TransitionState.Out;
         public float Duration { get; }
-        public float Value => MathHelper.Clamp(_currentSeconds / _halfDuration, 0f, 1f);
+        public virtual float Value => MathHelper.Clamp(CurrentSeconds / _halfDuration, 0f, 1f);
 
-        public event EventHandler StateChanged;
-        public event EventHandler Completed;
+        public virtual event EventHandler StateChanged;
+        public virtual event EventHandler Completed;
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             var elapsedSeconds = gameTime.GetElapsedSeconds();
 
             switch (State)
             {
                 case TransitionState.Out:
-                    _currentSeconds += elapsedSeconds;
+                    CurrentSeconds += elapsedSeconds;
 
-                    if (_currentSeconds >= _halfDuration)
+                    if (CurrentSeconds >= _halfDuration)
                     {
                         State = TransitionState.In;
                         StateChanged?.Invoke(this, EventArgs.Empty);
                     }
                     break;
                 case TransitionState.In:
-                    _currentSeconds -= elapsedSeconds;
+                    CurrentSeconds -= elapsedSeconds;
 
-                    if (_currentSeconds <= 0.0f)
+                    if (CurrentSeconds <= 0.0f)
                     {
                         Completed?.Invoke(this, EventArgs.Empty);
                     }

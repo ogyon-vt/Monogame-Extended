@@ -82,8 +82,8 @@ public class ScreenManager : SimpleDrawableGameComponent
 
         screen.ScreenManager = this;
         screen.IsActive = true;
-        screen.Initialize();
         screen.LoadContent();
+        screen.Initialize();
 
         _screens.Push(screen);
         _activeScreen = screen;
@@ -318,6 +318,7 @@ public class ScreenManager : SimpleDrawableGameComponent
             if (screen.IsActive || screen.DrawWhenInactive)
             {
                 screen.Draw(gameTime);
+                MonoGameGum.GumService.Default.Draw();
             }
         }
 
