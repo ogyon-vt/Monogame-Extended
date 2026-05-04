@@ -6,14 +6,17 @@
         <SolutionDirectory>$(MSBuildThisFileDirectory)</SolutionDirectory>
     </PropertyGroup>
 
+    <!-- Version Configuration -->
     <PropertyGroup>
-       <Version>5.3.1</Version>
-   </PropertyGroup>
+        <Version>6.0.0</Version>
+        <MonoGameVersion>3.8.4.1</MonoGameVersion>
+        <KNIVersion>4.0.9001</KNIVersion>
+    </PropertyGroup>
 
     <PropertyGroup>
-        <Authors>craftworkgames and contributors</Authors>
-        <PackageProjectUrl>https://github.com/craftworkgames/MonoGame.Extended</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/craftworkgames/MonoGame.Extended</RepositoryUrl>
+        <Authors>MonoGame Extended and contributors</Authors>
+        <PackageProjectUrl>https://github.com/MonoGame-Extended/MonoGame-Extended</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/MonoGame-Extended/MonoGame-Extended</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <RepositoryBranch>develop</RepositoryBranch>
         <NeutralLanguage>en</NeutralLanguage>
@@ -26,19 +29,6 @@
         <!-- path must be relative to the individual csproj's not this .targets file -->
         <None Include="../../logos/logo-nuget-128.png" Pack="true" PackagePath="" />
         <None Include="../../README.md" Pack="true" PackagePath="" />
-        <None Include="../../CHANGELOG.md" Pack="false" />
     </ItemGroup>
-
-    <!-- Setup Code Analysis using the .editorconfig file -->
-    <!-- <PropertyGroup>
-        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-        <AnalysisLevel>latest</AnalysisLevel>
-        <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
-        <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
-        <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
-        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-        <WarningsAsErrors>nullable</WarningsAsErrors>
-    </PropertyGroup> -->
 
 </Project>

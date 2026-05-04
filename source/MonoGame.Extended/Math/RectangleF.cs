@@ -26,7 +26,7 @@ namespace MonoGame.Extended
     /// <seealso cref="IEquatableByRef{T}" />
     [DataContract]
     [DebuggerDisplay("{DebugDisplayString,nq}")]
-    public struct RectangleF : IEquatable<RectangleF>, IEquatableByRef<RectangleF>, IShapeF
+    public struct RectangleF : IEquatable<RectangleF>, IEquatableByRef<RectangleF>
     {
         /// <summary>
         ///     The <see cref="RectangleF" /> with <see cref="X" />, <see cref="Y" />, <see cref="Width" /> and
@@ -324,26 +324,6 @@ namespace MonoGame.Extended
             RectangleF result;
             Union(ref this, ref rectangle, out result);
             return result;
-        }
-
-        [Obsolete("RectangleF.Intersection() will be removed in the next update. Use Intersect() instead.")]
-        public static void Intersection(ref RectangleF first,
-            ref RectangleF second, out RectangleF result)
-        {
-            Intersect(ref first, ref second, out result);
-        }
-
-        [Obsolete("RectangleF.Intersection() will be removed in the next update. Use Intersect() instead.")]
-        public static RectangleF Intersection(RectangleF first,
-            RectangleF second)
-        {
-            return Intersect(first, second);
-        }
-
-        [Obsolete("RectangleF.Intersection() will be removed in the next update. Use Intersect() instead.")]
-        public RectangleF Intersection(RectangleF rectangle)
-        {
-            return Intersect(rectangle);
         }
 
         /// <summary>

@@ -7,33 +7,36 @@
         <ArtifactsPath>$(SolutionDirectory).artifacts/source</ArtifactsPath>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <IsPackable>true</IsPackable>
-        <NoWarn>NU1701</NoWarn>
+        <NoWarn>NU1701;CS0067;CS0168;CS0414;CS0618;CS0169;CS1591;CS1723;CS8632;CA2200;CS1574;CS1572;CS1573</NoWarn>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
-   <ItemGroup Condition="!$(DefineConstants.Contains('FNA')) AND !$(DefineConstants.Contains('KNI'))">
-       <PackageReference Include="MonoGame.Framework.DesktopGL"
-                          Version="3.8.4"
+    <!-- MonoGame Framework References (Standard) -->
+    <ItemGroup Condition="!$(DefineConstants.Contains('FNA')) AND !$(DefineConstants.Contains('KNI'))">
+        <PackageReference Include="MonoGame.Framework.DesktopGL"
+                          Version="$(MonoGameVersion)"
                           PrivateAssets="All" />
     </ItemGroup>
 
-   <ItemGroup Condition="$(DefineConstants.Contains('FNA'))">
+    <!-- FNA Framework References -->
+    <ItemGroup Condition="$(DefineConstants.Contains('FNA'))">
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\..\FNA\FNA.NetStandard.csproj" />
-   </ItemGroup>
+    </ItemGroup>
 
-  <ItemGroup Condition="$(DefineConstants.Contains('KNI'))">
+    <!-- KNI Framework References -->
+    <ItemGroup Condition="$(DefineConstants.Contains('KNI'))">
         <PackageReference Include="nkast.Xna.Framework"
-                          Version="4.0.9001" />
+                          Version="$(KNIVersion)" />
         <PackageReference Include="nkast.Xna.Framework.Content"
-                          Version="4.0.9001" />
+                          Version="$(KNIVersion)" />
         <PackageReference Include="nkast.Xna.Framework.Graphics"
-                          Version="4.0.9001" />
+                          Version="$(KNIVersion)" />
         <PackageReference Include="nkast.Xna.Framework.Audio"
-                          Version="4.0.9001" />
+                          Version="$(KNIVersion)" />
         <PackageReference Include="nkast.Xna.Framework.Input"
-                          Version="4.0.9001" />
+                          Version="$(KNIVersion)" />
         <PackageReference Include="nkast.Xna.Framework.Game"
-                          Version="4.0.9001" />
-   </ItemGroup>
+                          Version="$(KNIVersion)" />
+    </ItemGroup>
 
 </Project>

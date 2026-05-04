@@ -20,7 +20,7 @@ namespace MonoGame.Extended
     /// <seealso cref="IEquatable{T}" />
     /// <seealso cref="IEquatableByRef{T}" />
     [DataContract]
-    public struct CircleF : IEquatable<CircleF>, IEquatableByRef<CircleF>, IShapeF
+    public struct CircleF : IEquatable<CircleF>, IEquatableByRef<CircleF>
     {
         /// <summary>
         ///     The centre position of this <see cref="CircleF" />.
@@ -331,12 +331,6 @@ namespace MonoGame.Extended
         {
             var direction = new Vector2((float) Math.Cos(angle), (float) Math.Sin(angle));
             return Center + Radius * direction;
-        }
-
-        [Obsolete("Circle.GetPointAlongEdge() may be removed in the future. Use BoundaryPointAt() instead.")]
-        public Vector2 GetPointAlongEdge(float angle)
-        {
-            return Center + new Vector2(Radius * (float) Math.Cos(angle), Radius * (float) Math.Sin(angle));
         }
 
         /// <summary>

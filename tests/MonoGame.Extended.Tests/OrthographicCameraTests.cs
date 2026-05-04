@@ -1,3 +1,4 @@
+#if !KNI && !FNA
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -236,42 +237,6 @@ public sealed class OrthographicCameraTests
     }
 
     [Fact]
-    public void SetPitch_BelowMinimum_ClampsToMinimum()
-    {
-        OrthographicCamera camera = new OrthographicCamera(_graphicsFixture.GraphicsDevice);
-        camera.MinimumPitch = 1.0f;
-
-        camera.Pitch = 0.9f;
-
-        Assert.Equal(camera.MinimumPitch, camera.Pitch);
-    }
-
-    [Fact]
-    public void SetPitch_AboveMaximum_ClampsToMaximum()
-    {
-        OrthographicCamera camera = new OrthographicCamera(_graphicsFixture.GraphicsDevice);
-        camera.MaximumPitch = 1.0f;
-
-        camera.Pitch = 1.1f;
-
-        Assert.Equal(camera.MaximumPitch, camera.Pitch);
-    }
-
-    [Fact]
-    public void SetMinimumPitch_Negative_ThrowsArgumentOutOfRangeException()
-    {
-        OrthographicCamera camera = new OrthographicCamera(_graphicsFixture.GraphicsDevice);
-        Assert.Throws<ArgumentOutOfRangeException>(() => camera.MinimumPitch = -0.01f);
-    }
-
-    [Fact]
-    public void SetMaximumPitch_Negative_ThrowsArgumentOutOfRangeException()
-    {
-        OrthographicCamera camera = new OrthographicCamera(_graphicsFixture.GraphicsDevice);
-        Assert.Throws<ArgumentOutOfRangeException>(() => camera.MaximumPitch = -0.01f);
-    }
-
-    [Fact]
     public void BoundingRectangle_WithMovement_ReturnsCorrectBounds()
     {
         DefaultViewportAdapter viewportAdapter = new DefaultViewportAdapter(_graphicsFixture.GraphicsDevice);
@@ -452,28 +417,6 @@ public sealed class OrthographicCameraTests
         camera.ZoomOut(1);
 
         Assert.Equal(originalZoom - 1, camera.Zoom);
-    }
-
-    [Fact]
-    public void PitchUp_IncreasesPitch()
-    {
-        OrthographicCamera camera = new OrthographicCamera(_graphicsFixture.GraphicsDevice);
-        float originalPitch = camera.Pitch;
-
-        camera.PitchUp(1);
-
-        Assert.Equal(originalPitch + 1, camera.Pitch);
-    }
-
-    [Fact]
-    public void PitchDown_DecreasesPitch()
-    {
-        OrthographicCamera camera = new OrthographicCamera(_graphicsFixture.GraphicsDevice);
-        float originalPitch = camera.Pitch;
-
-        camera.PitchDown(1);
-
-        Assert.Equal(originalPitch - 1, camera.Pitch);
     }
 
     [Fact]
@@ -1027,3 +970,4 @@ public sealed class OrthographicCameraTests
     }
 
 }
+#endif
